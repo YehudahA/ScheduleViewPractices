@@ -7,7 +7,6 @@ using Telerik.Windows.Controls;
 
 namespace DatabaseBindingSample.Models
 {
-    [Table("Categories")]
     public class CategoryModel : BindableBase, ICategory
     {
         [Key]

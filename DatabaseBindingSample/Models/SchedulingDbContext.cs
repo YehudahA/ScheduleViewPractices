@@ -11,5 +11,10 @@ namespace DatabaseBindingSample.Models
 
         public DbSet<AppointmentModel> Appointments { get; set; }
         public DbSet<CategoryModel> Categories { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Types().Configure(entity => entity.ToTable(entity.ClrType.Name.Replace("Model", "")));
+        }
     }
 }
