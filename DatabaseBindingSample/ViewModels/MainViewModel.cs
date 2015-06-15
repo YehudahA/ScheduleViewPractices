@@ -35,6 +35,10 @@ namespace DatabaseBindingSample.ViewModels
             get { return appointments; }
         }
 
+        #endregion // properties
+
+        #region commands
+
         public DelegateCommand<IDateSpan> LoadAppointmentsCommand
         {
             get { return loadAppointmentsCommand; }
@@ -45,7 +49,7 @@ namespace DatabaseBindingSample.ViewModels
             get { return saveCommand; }
         }
 
-        #endregion properties
+        #endregion // commands
 
         #region methods
 
