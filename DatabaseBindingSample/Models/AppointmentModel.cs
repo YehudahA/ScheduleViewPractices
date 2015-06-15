@@ -16,11 +16,12 @@ namespace DatabaseBindingSample.Models
         [Key]
         public int Id { get; set; }
 
-        #region IAppointment properties
+        #region properties
 
         private string subject, body;
-        private bool isAllDayEvent;
         private DateTime start, end;
+        private bool isAllDayEvent;
+        private Importance importance;
 
         public string Subject
         {
@@ -52,9 +53,36 @@ namespace DatabaseBindingSample.Models
             set { SetProperty(ref isAllDayEvent, value); }
         }
 
-        #endregion // IAppointment
+        public Importance Importance
+        {
+            get { return importance; }
+            set { SetProperty(ref importance, value); }
+        }
 
-        #region Unused properties
+        #endregion // properties
+
+        #region categorize
+
+        public int? CategoryId { get; set; }
+
+        private CategoryModel category;
+
+        // navigation property
+        public virtual CategoryModel Category
+        {
+            get { return this.category; }
+            set { SetProperty(ref category, value); }
+        }
+
+        ICategory IExtendedAppointment.Category
+        {
+            get { return this.Category; }
+            set { this.Category = value as CategoryModel; }
+        }
+
+        #endregion // categorize
+
+        #region not used properties
 
         IRecurrenceRule IAppointment.RecurrenceRule
         {
@@ -74,42 +102,13 @@ namespace DatabaseBindingSample.Models
             set;
         }
 
-        #endregion // Unused properties
-
-        #region IExtendedAppointment
-
-        private Importance importance;
-
-        public Importance Importance
-        {
-            get { return importance; }
-            set { SetProperty(ref importance, value); }
-        }
-
-        public int? CategoryId { get; set; }
-
-        private CategoryModel category;
-
-        // navigation property
-        public virtual CategoryModel Category
-        {
-            get { return this.category; }
-            set { SetProperty(ref category, value); }
-        }
-
-        ICategory IExtendedAppointment.Category
-        {
-            get { return this.Category; }
-            set { this.Category = value as CategoryModel; }
-        }
-
         ITimeMarker IExtendedAppointment.TimeMarker
         {
             get;
             set;
         }
 
-        #endregion // IExtendedAppointment
+        #endregion // not used properties
 
         #region event handlers
 
