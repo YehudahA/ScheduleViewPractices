@@ -1,6 +1,5 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Windows.Media;
 using Telerik.Windows.Controls;
@@ -10,16 +9,18 @@ namespace DatabaseBindingSample.Models
     [Table("Categories")]
     public class CategoryModel : BindableBase, ICategory
     {
-        [Key]
         public int Id { get; set; }
 
-        private string displayName;
-        private string categoryColorString;
+        private string categoryName, categoryColorString;
 
-        public string DisplayName
+        public string CategoryName
         {
-            get { return displayName; }
-            set { SetProperty(ref displayName, value); }
+            get { return this.categoryName; }
+            set
+            {
+                SetProperty(ref categoryName, value);
+                OnPropertyChanged(() => this.DisplayName);
+            }
         }
 
         public string CategoryColorString
@@ -35,15 +36,15 @@ namespace DatabaseBindingSample.Models
             }
         }
 
-        [NotMapped]
-        public string CategoryName
-        {
-            get { return this.DisplayName; }
-            set { this.DisplayName = value; }
-        }
-
         // Relationships
         public virtual ICollection<AppointmentModel> Appointments { get; set; }
+
+        [NotMapped]
+        public string DisplayName
+        {
+            get { return this.CategoryName; }
+            set { this.CategoryName = value; }
+        }
 
         #region color properties
 

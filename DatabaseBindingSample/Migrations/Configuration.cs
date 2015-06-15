@@ -16,10 +16,10 @@ namespace DatabaseBindingSample.Migrations
         protected override void Seed(SchedulingDbContext context)
         {
             context.Categories.AddOrUpdate(
-                category => category.DisplayName,
-                new CategoryModel { DisplayName = "Red category", CategoryColor = System.Windows.Media.Colors.Red },
-                new CategoryModel { DisplayName = "Yellow category", CategoryColor = System.Windows.Media.Colors.Yellow },
-                new CategoryModel { DisplayName = "Gray category", CategoryColor = System.Windows.Media.Color.FromRgb(200, 200, 200) }
+                category => category.CategoryName,
+                new CategoryModel { CategoryName = "Red category", CategoryColor = System.Windows.Media.Colors.Red },
+                new CategoryModel { CategoryName = "Yellow category", CategoryColor = System.Windows.Media.Colors.Yellow },
+                new CategoryModel { CategoryName = "Gray category", CategoryColor = System.Windows.Media.Color.FromRgb(200, 200, 200) }
             );
         }
     }
