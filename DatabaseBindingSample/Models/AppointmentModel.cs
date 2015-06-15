@@ -10,6 +10,7 @@ using Telerik.Windows.Controls.ScheduleView;
 
 namespace DatabaseBindingSample.Models
 {
+    [Table("Appointments")]
     public class AppointmentModel : BindableBase, IAppointment, IExtendedAppointment
     {
         [Key]
