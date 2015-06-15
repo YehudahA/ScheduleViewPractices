@@ -67,7 +67,7 @@ namespace DatabaseBindingSample.Models
 
         private CategoryModel category;
 
-        // navigation property
+        [ForeignKey("CategoryId")]
         public virtual CategoryModel Category
         {
             get { return this.category; }

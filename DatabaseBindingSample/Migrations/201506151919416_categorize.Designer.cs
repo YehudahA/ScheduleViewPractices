@@ -13,7 +13,7 @@ namespace DatabaseBindingSample.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201506150803315_categorize"; }
+            get { return "201506151919416_categorize"; }
         }
         
         string IMigrationMetadata.Source

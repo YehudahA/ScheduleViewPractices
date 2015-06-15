@@ -8,7 +8,7 @@ namespace DatabaseBindingSample.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.CategoryModels",
+                "dbo.Categories",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -19,15 +19,15 @@ namespace DatabaseBindingSample.Migrations
             
             AddColumn("dbo.Appointments", "CategoryId", c => c.Int());
             CreateIndex("dbo.Appointments", "CategoryId");
-            AddForeignKey("dbo.Appointments", "CategoryId", "dbo.CategoryModels", "Id");
+            AddForeignKey("dbo.Appointments", "CategoryId", "dbo.Categories", "Id");
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Appointments", "CategoryId", "dbo.CategoryModels");
+            DropForeignKey("dbo.Appointments", "CategoryId", "dbo.Categories");
             DropIndex("dbo.Appointments", new[] { "CategoryId" });
             DropColumn("dbo.Appointments", "CategoryId");
-            DropTable("dbo.CategoryModels");
+            DropTable("dbo.Categories");
         }
     }
 }
