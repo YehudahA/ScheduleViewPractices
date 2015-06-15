@@ -86,27 +86,24 @@ namespace DatabaseBindingSample.Models
             set { SetProperty(ref importance, value); }
         }
 
-        public int? CategoryId { get; set; }
-
-        private CategoryModel category;
-
-        // navigation property
-        public virtual CategoryModel Category
-        {
-            get { return this.category; }
-            set { SetProperty(ref category, value); }
-        }
-
         ICategory IExtendedAppointment.Category
         {
-            get { return this.Category; }
-            set { this.Category = value as CategoryModel; }
+            get;
+            set;
+        }
+
+        public string TimeMarkerName { get; set; }
+
+        public TimeMarker TimeMarker
+        {
+            get { return Helpers.TimeMarkerHelper.GetTimeMarkerByName(TimeMarkerName); }
+            set { TimeMarkerName = value.TimeMarkerName; }
         }
 
         ITimeMarker IExtendedAppointment.TimeMarker
         {
-            get;
-            set;
+            get { return this.TimeMarker; }
+            set { this.TimeMarker = value as TimeMarker; }
         }
 
         #endregion // IExtendedAppointment
