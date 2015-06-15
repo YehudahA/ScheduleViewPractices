@@ -3,7 +3,7 @@ namespace DatabaseBindingSample.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class categorize : DbMigration
+    public partial class Categorize : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace DatabaseBindingSample.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        DisplayName = c.String(),
+                        CategoryName = c.String(),
                         CategoryColorString = c.String(),
                     })
                 .PrimaryKey(t => t.Id);

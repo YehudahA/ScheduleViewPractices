@@ -7,13 +7,13 @@ namespace DatabaseBindingSample.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class categorize : IMigrationMetadata
+    public sealed partial class Categorize : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(categorize));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Categorize));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506151919416_categorize"; }
+            get { return "201506152104416_Categorize"; }
         }
         
         string IMigrationMetadata.Source
