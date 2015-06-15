@@ -60,6 +60,10 @@
       <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries.NoXaml\WPF45\Telerik.Windows.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries\WPF45\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls.Input, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Program Files (x86)\Telerik\UI for WPF Q1 2015\Binaries.NoXaml\WPF45\Telerik.Windows.Controls.Input.dll</HintPath>
       <Private>True</Private>
@@ -98,7 +102,15 @@
     <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
+    <Compile Include="Mvvm\DialogService.cs" />
+    <Compile Include="Mvvm\IDialogService.cs" />
+    <Compile Include="Mvvm\IDialogViewModel.cs" />
+    <Compile Include="Mvvm\ViewLocator.cs" />
+    <Compile Include="ViewModels\CategoriesEditorViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\CategoriesEditorView.xaml.cs">
+      <DependentUpon>CategoriesEditorView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Office2013\System.Windows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Office2013\Telerik.Windows.Controls.GridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -129,6 +145,10 @@
     <Page Include="Themes\Office2013\Telerik.Windows.Controls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CategoriesEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

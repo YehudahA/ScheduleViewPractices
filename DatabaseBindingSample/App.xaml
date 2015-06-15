@@ -10,6 +10,7 @@
             <ResourceDictionary Source="Themes/Office2013/Telerik.Windows.Controls.Input.xaml" />
             <ResourceDictionary Source="Themes/Office2013/Telerik.Windows.Controls.Navigation.xaml" />
             <ResourceDictionary Source="Themes/Office2013/Telerik.Windows.Controls.ScheduleView.xaml" />
+            <ResourceDictionary Source="Themes/Office2013/Telerik.Windows.Controls.GridView.xaml" />
           </ResourceDictionary.MergedDictionaries>
       </ResourceDictionary>
     </Application.Resources>

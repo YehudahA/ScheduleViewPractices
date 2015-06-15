@@ -16,18 +16,26 @@ namespace DatabaseBindingSample.ViewModels
         public MainViewModel()
         {
             this.context = new SchedulingDbContext();
+            this.dialogService = new Mvvm.DialogService();
+
             this.appointments = new RadObservableCollection<AppointmentModel>();
             this.loadAppointmentsCommand = new DelegateCommand<IDateSpan>(LoadAppointments);
             this.saveCommand = new DelegateCommand(Save);
+            this.editCategoriesCommand = new DelegateCommand(EditCategories);
 
             this.appointments.CollectionChanged += appointments_CollectionChanged;
             this.context.Categories.Load();
         }
 
+
         private readonly SchedulingDbContext context;
+        private readonly Mvvm.IDialogService dialogService;
         private readonly RadObservableCollection<AppointmentModel> appointments;
         private readonly DelegateCommand<IDateSpan> loadAppointmentsCommand;
         private readonly DelegateCommand saveCommand;
+        private readonly DelegateCommand editCategoriesCommand;
+
+        private IDateSpan dateSpan;
 
         #endregion // ctor; fields
 
@@ -57,12 +65,17 @@ namespace DatabaseBindingSample.ViewModels
             get { return saveCommand; }
         }
 
+        public DelegateCommand EditCategoriesCommand
+        {
+            get { return editCategoriesCommand; }
+        }
         #endregion // commands
 
         #region methods
 
         private void LoadAppointments(IDateSpan dateSpan)
         {
+            this.dateSpan = dateSpan;
             appointments.Clear();
             IQueryable<AppointmentModel> query = context.Appointments.Where(app => app.Start >= dateSpan.Start && app.End <= dateSpan.End);
             appointments.AddRange(query);
@@ -83,6 +96,17 @@ namespace DatabaseBindingSample.ViewModels
             else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
             {
                 context.Appointments.RemoveRange(e.OldItems.Cast<AppointmentModel>());
+            }
+        }
+
+        private void EditCategories()
+        {
+            CategoriesEditorViewModel viewModel = new CategoriesEditorViewModel(this.context);
+            bool? changed = dialogService.RaiseDialog(viewModel);
+
+            if (changed ?? false)
+            {
+                this.LoadAppointments(this.dateSpan);
             }
         }
 
