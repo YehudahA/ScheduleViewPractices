@@ -85,12 +85,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.Designer.cs">
       <DependentUpon>201506150718575_database_initialize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506150803315_categorize.cs" />
+    <Compile Include="Migrations\201506150803315_categorize.Designer.cs">
+      <DependentUpon>201506150803315_categorize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppointmentModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -138,6 +144,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506150718575_database_initialize.resx">
       <DependentUpon>201506150718575_database_initialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506150803315_categorize.resx">
+      <DependentUpon>201506150803315_categorize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

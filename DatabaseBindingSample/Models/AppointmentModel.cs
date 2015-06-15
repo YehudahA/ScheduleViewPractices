@@ -86,10 +86,21 @@ namespace DatabaseBindingSample.Models
             set { SetProperty(ref importance, value); }
         }
 
+        public int? CategoryId { get; set; }
+
+        private CategoryModel category;
+
+        // navigation property
+        public virtual CategoryModel Category
+        {
+            get { return this.category; }
+            set { SetProperty(ref category, value); }
+        }
+
         ICategory IExtendedAppointment.Category
         {
-            get;
-            set;
+            get { return this.Category; }
+            set { this.Category = value as CategoryModel; }
         }
 
         ITimeMarker IExtendedAppointment.TimeMarker

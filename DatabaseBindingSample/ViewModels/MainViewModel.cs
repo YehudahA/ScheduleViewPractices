@@ -1,6 +1,8 @@
 ﻿using DatabaseBindingSample.Models;
 using Microsoft.Practices.Prism.Commands;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data.Entity;
 using System.Linq;
 using Telerik.Windows.Controls.ScheduleView;
 using Telerik.Windows.Data;
@@ -19,6 +21,7 @@ namespace DatabaseBindingSample.ViewModels
             this.saveCommand = new DelegateCommand(Save);
 
             this.appointments.CollectionChanged += appointments_CollectionChanged;
+            this.context.Categories.Load();
         }
 
         private readonly SchedulingDbContext context;
@@ -30,10 +33,19 @@ namespace DatabaseBindingSample.ViewModels
 
         #region properties
 
+        public ObservableCollection<CategoryModel> Categories
+        {
+            get { return context.Categories.Local; }
+        }
+
         public RadObservableCollection<AppointmentModel> Appointments
         {
             get { return appointments; }
         }
+
+        #endregion // properties
+
+        #region commands
 
         public DelegateCommand<IDateSpan> LoadAppointmentsCommand
         {
@@ -45,7 +57,7 @@ namespace DatabaseBindingSample.ViewModels
             get { return saveCommand; }
         }
 
-        #endregion properties
+        #endregion // commands
 
         #region methods
 

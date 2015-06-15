@@ -9,7 +9,7 @@ namespace DatabaseBindingSample.Models
         {
         }
 
-        
         public DbSet<AppointmentModel> Appointments { get; set; }
+        public DbSet<CategoryModel> Categories { get; set; }
     }
 }

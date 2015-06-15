@@ -11,7 +11,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <telerik:RadScheduleView AppointmentsSource="{Binding Appointments}"
+        <telerik:RadScheduleView AppointmentsSource="{Binding Appointments,Mode=OneTime}"
+                                 CategoriesSource="{Binding Categories,Mode=OneTime}"
                                  VisibleRangeChangedCommand="{Binding LoadAppointmentsCommand}"
                                  VisibleRangeChangedCommandParameter="{Binding VisibleRange, RelativeSource={RelativeSource Self}}"
                                  Grid.Row="0">
