@@ -13,6 +13,11 @@ namespace DatabaseBindingSample.Models
     [Table("Appointments")]
     public class AppointmentModel : BindableBase, IAppointment, IExtendedAppointment
     {
+        public AppointmentModel()
+        {
+            this.Resources = new List<ResourceModel>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -82,17 +87,23 @@ namespace DatabaseBindingSample.Models
 
         #endregion // categorize
 
+        #region resources
+
+        public virtual List<ResourceModel> Resources { get; set; }
+
+        IList IAppointment.Resources
+        {
+            get { return this.Resources; }
+        }
+
+        #endregion // resources
+
         #region not used properties
 
         IRecurrenceRule IAppointment.RecurrenceRule
         {
             get;
             set;
-        }
-
-        IList IAppointment.Resources
-        {
-            get { return new List<Resource>(); }
         }
 
         [NotMapped]

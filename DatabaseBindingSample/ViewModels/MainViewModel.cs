@@ -25,6 +25,7 @@ namespace DatabaseBindingSample.ViewModels
 
             this.appointments.CollectionChanged += appointments_CollectionChanged;
             this.context.Categories.Load();
+            this.context.ResourceTypes.Load();
         }
 
 
@@ -44,6 +45,11 @@ namespace DatabaseBindingSample.ViewModels
         public ObservableCollection<CategoryModel> Categories
         {
             get { return context.Categories.Local; }
+        }
+
+        public ObservableCollection<ResourceTypeModel> ResourceTypes
+        {
+            get { return context.ResourceTypes.Local; }
         }
 
         public RadObservableCollection<AppointmentModel> Appointments

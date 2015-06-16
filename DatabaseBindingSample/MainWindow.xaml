@@ -13,9 +13,17 @@
 
         <telerik:RadScheduleView AppointmentsSource="{Binding Appointments,Mode=OneTime}"
                                  CategoriesSource="{Binding Categories,Mode=OneTime}"
+                                 ResourceTypesSource="{Binding ResourceTypes,Mode=OneTime}"
                                  VisibleRangeChangedCommand="{Binding LoadAppointmentsCommand}"
                                  VisibleRangeChangedCommandParameter="{Binding VisibleRange, RelativeSource={RelativeSource Self}}"
                                  Grid.Row="0">
+            <telerik:RadScheduleView.GroupDescriptionsSource>
+                <telerik:GroupDescriptionCollection>
+                    <telerik:ResourceGroupDescription ResourceType="Agent" />
+                    <telerik:DateGroupDescription />
+                </telerik:GroupDescriptionCollection>
+            </telerik:RadScheduleView.GroupDescriptionsSource>
+            
             <telerik:RadScheduleView.ViewDefinitions>
                 <telerik:MonthViewDefinition />
                 <telerik:DayViewDefinition />

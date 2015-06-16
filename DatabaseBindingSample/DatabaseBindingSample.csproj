@@ -98,9 +98,15 @@
     <Compile Include="Migrations\201506152104416_Categorize.Designer.cs">
       <DependentUpon>201506152104416_Categorize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506152158028_ResourcesMig.cs" />
+    <Compile Include="Migrations\201506152158028_ResourcesMig.Designer.cs">
+      <DependentUpon>201506152158028_ResourcesMig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ResourceModel.cs" />
+    <Compile Include="Models\ResourceTypeModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
     <Compile Include="Mvvm\DialogService.cs" />
     <Compile Include="Mvvm\IDialogService.cs" />
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506152104416_Categorize.resx">
       <DependentUpon>201506152104416_Categorize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506152158028_ResourcesMig.resx">
+      <DependentUpon>201506152158028_ResourcesMig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
