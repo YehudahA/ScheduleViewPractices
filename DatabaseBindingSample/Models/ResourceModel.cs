@@ -18,6 +18,7 @@ namespace DatabaseBindingSample.Models
         public virtual ResourceTypeModel ResourceType { get; set; }
 
         public virtual ICollection<AppointmentModel> Appointments { get; set; }
+        public virtual ICollection<ExceptionAppointmentModel> ExceptionAppointments { get; set; }
 
 
         [NotMapped]

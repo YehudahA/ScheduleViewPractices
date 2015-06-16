@@ -89,6 +89,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Collections.Generic\CollectionWrapper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.Designer.cs">
@@ -103,8 +104,12 @@
       <DependentUpon>201506152158028_ResourcesMig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppointmentModelBase.cs" />
     <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ExceptionAppointmentModel.cs" />
+    <Compile Include="Models\ExceptionOccurrenceModel.cs" />
+    <Compile Include="Models\RecurrenceRuleModel.cs" />
     <Compile Include="Models\ResourceModel.cs" />
     <Compile Include="Models\ResourceTypeModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
@@ -161,6 +166,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="Models\ModelsDiagram.cd" />
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>

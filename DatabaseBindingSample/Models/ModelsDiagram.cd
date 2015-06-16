@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DatabaseBindingSample.Models.AppointmentModelBase">
+    <Position X="3.75" Y="0.75" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIDIAACoKIAAiCggIARAAGIAwAACAACEAQKAAAACAA=</HashCode>
+      <FileName>Models\AppointmentModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DatabaseBindingSample.Models.AppointmentModel">
+    <Position X="1.75" Y="5.5" Width="3.5" />
+    <InheritanceLine Type="DatabaseBindingSample.Models.AppointmentModelBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="5.101" />
+        <Point X="4.75" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AppointmentModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DatabaseBindingSample.Models.ExceptionAppointmentModel">
+    <Position X="5.5" Y="5.5" Width="3.5" />
+    <InheritanceLine Type="DatabaseBindingSample.Models.AppointmentModelBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.375" Y="5.101" />
+        <Point X="6.375" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\ExceptionAppointmentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="9" />
+</ClassDiagram>
