@@ -27,11 +27,12 @@ namespace DatabaseBindingSample.Mvvm
             handler =
                 (sender, e) =>
                 {
-                    wrapperWindow.Closed -= handler;
                     wrapperWindow.Content = null;
+                    wrapperWindow.Close();
+                    viewModel.RequestClose -= handler;
                 };
 
-            wrapperWindow.Closed += handler;
+            viewModel.RequestClose += handler;
             wrapperWindow.ShowDialog();
 
             return viewModel.DialogResult;
@@ -62,7 +63,6 @@ namespace DatabaseBindingSample.Mvvm
             }
 
             FrameworkElement view = ViewLocator.GetViewByViewModel(viewModel);
-            viewModel.FinishInteraction = () => wrapperWindow.Close();
             wrapperWindow.Content = view;
 
             return wrapperWindow;
