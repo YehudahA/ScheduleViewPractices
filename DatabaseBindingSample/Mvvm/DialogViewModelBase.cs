@@ -5,8 +5,26 @@ namespace DatabaseBindingSample.Mvvm
 {
     public abstract class DialogViewModelBase : BindableBase, IDialogViewModel
     {
-        public virtual string Title { get; protected set; }
-        public virtual bool? DialogResult { get; protected set; }
+        string title = "Dialog";
+
+        public string Title
+        {
+            get { return title; }
+        }
+
+        public virtual bool? DialogResult
+        {
+            get;
+            protected set;
+        }
+
+        protected void SetTitle(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+                throw new ArgumentException("Title cannot be empty");
+
+            this.title = title;
+        }
 
         protected void OnRequestClose()
         {
