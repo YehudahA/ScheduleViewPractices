@@ -12,6 +12,7 @@ namespace DatabaseBindingSample.ViewModels
             this.dbContext = dbContext;
             this.dbContext.Categories.Load();
             this.saveCommand = new DelegateCommand(Save);
+            base.SetTitle("Edit Categories");
         }
 
         private readonly SchedulingDbContext dbContext;
