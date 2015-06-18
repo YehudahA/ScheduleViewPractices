@@ -6,6 +6,6 @@ namespace DatabaseBindingSample.Mvvm
     {
         string Title { get; }
         bool? DialogResult { get; }
-        Action FinishInteraction { get; set; }
+        event EventHandler RequestClose;
     }
 }

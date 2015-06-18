@@ -103,6 +103,7 @@
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
     <Compile Include="Mvvm\DialogService.cs" />
+    <Compile Include="Mvvm\DialogViewModelBase.cs" />
     <Compile Include="Mvvm\IDialogService.cs" />
     <Compile Include="Mvvm\IDialogViewModel.cs" />
     <Compile Include="Mvvm\ViewLocator.cs" />

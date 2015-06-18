@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace DatabaseBindingSample.ViewModels
 {
-    public class CategoriesEditorViewModel : Mvvm.IDialogViewModel
+    public class CategoriesEditorViewModel : Mvvm.DialogViewModelBase
     {
         public CategoriesEditorViewModel(SchedulingDbContext dbContext)
         {
@@ -31,28 +31,7 @@ namespace DatabaseBindingSample.ViewModels
         {
             dbContext.SaveChanges();
             this.DialogResult = true;
-            this.FinishInteraction();
+            base.OnRequestClose();
         }
-
-        #region IDialogViewModel
-
-        public string Title
-        {
-            get { return "Edit categories"; }
-        }
-
-        public bool? DialogResult
-        {
-            get;
-            private set;
-        }
-
-        public System.Action FinishInteraction
-        {
-            get;
-            set;
-        }
-
-        #endregion // IDialogViewModel
     }
 }
