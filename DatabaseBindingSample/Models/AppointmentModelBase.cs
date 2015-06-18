@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ScheduleView;
@@ -94,16 +93,22 @@ namespace DatabaseBindingSample.Models
 
         #endregion // resources
 
+        #region timemarker
+
+        public string TimeMarkerString { get; set; }
+
+        public ITimeMarker TimeMarker
+        {
+            get { return Helpers.TimeMarkerHelper.ResolveTimeMarkerByName(this.TimeMarkerString); }
+            set { this.TimeMarkerString = value.TimeMarkerName; }
+        }
+
+        #endregion // timemarker
+
         #region not used properties
 
         [NotMapped]
         public TimeZoneInfo TimeZone
-        {
-            get;
-            set;
-        }
-
-        ITimeMarker IExtendedAppointment.TimeMarker
         {
             get;
             set;
@@ -146,20 +151,21 @@ namespace DatabaseBindingSample.Models
 
         public virtual void CopyFrom(IAppointment other)
         {
-            AppointmentModelBase appointment = other as AppointmentModelBase;
+            AppointmentModelBase sourceAppointment = other as AppointmentModelBase;
 
-            if (appointment == null)
+            if (sourceAppointment == null)
                 return;
 
-            this.Subject = appointment.Subject;
-            this.Body = appointment.Body;
-            this.Start = appointment.Start;
-            this.End = appointment.End;
+            this.Subject = sourceAppointment.Subject;
+            this.Body = sourceAppointment.Body;
+            this.Start = sourceAppointment.Start;
+            this.End = sourceAppointment.End;
             this.IsAllDayEvent = this.IsAllDayEvent;
-            this.Importance = appointment.Importance;
-            this.Category = appointment.Category;
+            this.Importance = sourceAppointment.Importance;
+            this.Category = sourceAppointment.Category;
             this.Resources.Clear();
-            this.Resources.AddRange(appointment.Resources);
+            this.Resources.AddRange(sourceAppointment.Resources);
+            this.TimeMarker = sourceAppointment.TimeMarker;
         }
 
         #endregion // ICopyable<IAppointment>

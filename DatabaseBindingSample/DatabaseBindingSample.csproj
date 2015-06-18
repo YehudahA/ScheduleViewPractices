@@ -89,6 +89,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\TimeMarkerHelper.cs" />
+    <Compile Include="Migrations\201506180744122_TimeMarkerMigration.cs" />
+    <Compile Include="Migrations\201506180744122_TimeMarkerMigration.Designer.cs">
+      <DependentUpon>201506180744122_TimeMarkerMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjectModel\CollectionWrapper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\RecurrenceHelper.cs" />
@@ -197,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506161543243_AppointmentIdentity.resx">
       <DependentUpon>201506161543243_AppointmentIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506180744122_TimeMarkerMigration.resx">
+      <DependentUpon>201506180744122_TimeMarkerMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
