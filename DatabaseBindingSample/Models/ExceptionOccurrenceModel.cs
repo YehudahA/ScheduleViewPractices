@@ -11,7 +11,7 @@ namespace DatabaseBindingSample.Models
         public DateTime ExceptionDate { get; set; }
 
         [ForeignKey("RecurrenceRule")]
-        public int ReccurrenceRuleId { get; set; }
+        public int RecurrenceRuleId { get; set; }
 
         public virtual RecurrenceRuleModel RecurrenceRule { get; set; }
         public virtual ExceptionAppointmentModel Appointment { get; set; }

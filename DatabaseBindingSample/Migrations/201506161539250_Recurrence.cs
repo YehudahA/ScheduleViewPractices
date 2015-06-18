@@ -26,11 +26,11 @@ namespace DatabaseBindingSample.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ExceptionDate = c.DateTime(nullable: false),
-                        ReccurrenceRuleId = c.Int(nullable: false),
+                        RecurrenceRuleId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.RecurrenceRules", t => t.ReccurrenceRuleId, cascadeDelete: true)
-                .Index(t => t.ReccurrenceRuleId);
+                .ForeignKey("dbo.RecurrenceRules", t => t.RecurrenceRuleId, cascadeDelete: true)
+                .Index(t => t.RecurrenceRuleId);
             
             CreateTable(
                 "dbo.ExceptionAppointments",
@@ -73,7 +73,7 @@ namespace DatabaseBindingSample.Migrations
         {
             DropForeignKey("dbo.ResourceModelAppointmentModels", "AppointmentModel_Id", "dbo.Appointments");
             DropForeignKey("dbo.RecurrenceRules", "AppointmentId", "dbo.Appointments");
-            DropForeignKey("dbo.ExceptionOccurrences", "ReccurrenceRuleId", "dbo.RecurrenceRules");
+            DropForeignKey("dbo.ExceptionOccurrences", "RecurrenceRuleId", "dbo.RecurrenceRules");
             DropForeignKey("dbo.ResourceModelExceptionAppointmentModels", "ExceptionAppointmentModel_ExceptionOccurrenceId", "dbo.ExceptionAppointments");
             DropForeignKey("dbo.ResourceModelExceptionAppointmentModels", "ResourceModel_Id", "dbo.Resources");
             DropForeignKey("dbo.ExceptionAppointments", "ExceptionOccurrenceId", "dbo.ExceptionOccurrences");
@@ -82,7 +82,7 @@ namespace DatabaseBindingSample.Migrations
             DropIndex("dbo.ResourceModelExceptionAppointmentModels", new[] { "ResourceModel_Id" });
             DropIndex("dbo.ExceptionAppointments", new[] { "CategoryId" });
             DropIndex("dbo.ExceptionAppointments", new[] { "ExceptionOccurrenceId" });
-            DropIndex("dbo.ExceptionOccurrences", new[] { "ReccurrenceRuleId" });
+            DropIndex("dbo.ExceptionOccurrences", new[] { "RecurrenceRuleId" });
             DropIndex("dbo.RecurrenceRules", new[] { "AppointmentId" });
             DropPrimaryKey("dbo.Appointments");
             AlterColumn("dbo.Appointments", "Id", c => c.Int(nullable: false, identity: true));
