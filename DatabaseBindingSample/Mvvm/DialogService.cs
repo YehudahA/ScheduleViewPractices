@@ -14,7 +14,7 @@ namespace DatabaseBindingSample.Mvvm
 
         #endregion // IDialogSeivice
 
-        #region helpers
+        #region private
 
         private bool? Invoke(IDialogViewModel viewModel)
         {
@@ -22,18 +22,16 @@ namespace DatabaseBindingSample.Mvvm
             wrapperWindow.SizeToContent = SizeToContent.WidthAndHeight;
 
             // We invoke the callback when the interaction's window is closed.
-            EventHandler handler = null;
-            
-            handler =
+            EventHandler handler = 
                 (sender, e) =>
                 {
                     wrapperWindow.Content = null;
                     wrapperWindow.Close();
-                    viewModel.RequestClose -= handler;
                 };
 
             viewModel.RequestClose += handler;
             wrapperWindow.ShowDialog();
+            viewModel.RequestClose -= handler;
 
             return viewModel.DialogResult;
         }
@@ -68,6 +66,6 @@ namespace DatabaseBindingSample.Mvvm
             return wrapperWindow;
         }
 
-        #endregion // helpers
+        #endregion // private
     }
 }
