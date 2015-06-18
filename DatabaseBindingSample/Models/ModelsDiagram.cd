@@ -8,35 +8,29 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAIDIAACoKIAAiCggIARAAGIAwAACAACEAQKAAAACAA=</HashCode>
+      <HashCode>AAIBIAACoKIAAiCggIARACGIAwAACAACEAQKAAAACAA=</HashCode>
       <FileName>Models\AppointmentModelBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DatabaseBindingSample.Models.AppointmentModel">
     <Position X="1.75" Y="5.5" Width="3.5" />
-    <InheritanceLine Type="DatabaseBindingSample.Models.AppointmentModelBase" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="4.75" Y="5.101" />
-        <Point X="4.75" Y="5.5" />
-      </Path>
-    </InheritanceLine>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAABACAAoAAAACEAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AppointmentModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DatabaseBindingSample.Models.ExceptionAppointmentModel">
     <Position X="5.5" Y="5.5" Width="3.5" />
-    <InheritanceLine Type="DatabaseBindingSample.Models.AppointmentModelBase" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6.375" Y="5.101" />
-        <Point X="6.375" Y="5.5" />
-      </Path>
-    </InheritanceLine>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAAAEgAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\ExceptionAppointmentModel.cs</FileName>
     </TypeIdentifier>
   </Class>

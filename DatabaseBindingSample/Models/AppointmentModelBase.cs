@@ -157,6 +157,9 @@ namespace DatabaseBindingSample.Models
             this.End = appointment.End;
             this.IsAllDayEvent = this.IsAllDayEvent;
             this.Importance = appointment.Importance;
+            this.Category = appointment.Category;
+            this.Resources.Clear();
+            this.Resources.AddRange(appointment.Resources);
         }
 
         #endregion // ICopyable<IAppointment>

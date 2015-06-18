@@ -14,7 +14,7 @@ namespace DatabaseBindingSample.Models
 
         protected override AppointmentModelBase CreateNewAppointment()
         {
-            return new AppointmentModel();
+            return new ExceptionAppointmentModel();
         }
 
         public override bool Equals(Telerik.Windows.Controls.ScheduleView.IAppointment other)

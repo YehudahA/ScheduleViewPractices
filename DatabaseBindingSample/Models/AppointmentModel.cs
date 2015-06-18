@@ -9,6 +9,7 @@ namespace DatabaseBindingSample.Models
     public class AppointmentModel : AppointmentModelBase, IAppointment, IObjectGenerator<IRecurrenceRule>
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public virtual RecurrenceRuleModel RecurrenceRule { get; set; }
@@ -22,8 +23,9 @@ namespace DatabaseBindingSample.Models
         #region IObjectGenerator<IRecurrenceRule>
 
         /////////////////////////////////////////
-        // if IAppointment implaments the IObjectGenerator<IRecurrenceRule>, the Schedule use the CreateNew() method to create IRecurrenceRule
-        // else, Telerik.Windows.Controls.ScheduleView.RecurrenceRule instance generated
+        // When the user click on "Edit recurrence" button on AppointmentDialog, and a new IRecureenceRule is required, then:
+        // if the appointment implements IObjectGenerator<IRecurrenceRule>, the new IRecurrenceRule will be created using the CreateNew() method.
+        // else, a new instance of Telerik.Windows.Controls.ScheduleView.RecurrenceRule will be generated
         ////////////////////////////////////////
 
         IRecurrenceRule IObjectGenerator<IRecurrenceRule>.CreateNew(IRecurrenceRule item)
@@ -35,9 +37,10 @@ namespace DatabaseBindingSample.Models
 
         IRecurrenceRule IObjectGenerator<IRecurrenceRule>.CreateNew()
         {
-            RecurrenceRuleModel rule = new RecurrenceRuleModel();
-            this.RecurrenceRule = rule;
-            return rule;
+            if (this.RecurrenceRule == null)
+                this.RecurrenceRule = new RecurrenceRuleModel();
+
+            return this.RecurrenceRule; ;
         }
 
         #endregion // IObjectGenerator<IRecurrenceRule>
@@ -56,7 +59,17 @@ namespace DatabaseBindingSample.Models
             return otherApp != null
                 && otherApp.Id == this.Id;
         }
-        
+
+        public override void CopyFrom(IAppointment other)
+        {
+            base.CopyFrom(other);
+
+            AppointmentModel otherAppointment = other as AppointmentModel;
+
+            if (otherAppointment.RecurrenceRule != null)
+                this.RecurrenceRule = otherAppointment.RecurrenceRule.Copy() as RecurrenceRuleModel;
+        }
+
         #endregion // override
     }
 }

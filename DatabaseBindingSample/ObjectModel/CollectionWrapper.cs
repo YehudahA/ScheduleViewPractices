@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DatabaseBindingSample.Collections.Generic
+namespace ObjectModel
 {
     public sealed class CollectionWrapper<TBase, TDerived> : ICollection<TBase> where TDerived : TBase
     {
@@ -40,7 +40,7 @@ namespace DatabaseBindingSample.Collections.Generic
                     array[num] = this.source.Skip(i).FirstOrDefault();
                 }
             }
-            catch (ArrayTypeMismatchException arrayTypeMismatchException)
+            catch
             {
                 throw new ArgumentException();
             }

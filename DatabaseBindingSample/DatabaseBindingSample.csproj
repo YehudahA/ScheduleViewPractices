@@ -89,8 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Collections.Generic\CollectionWrapper.cs" />
+    <Compile Include="ObjectModel\CollectionWrapper.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\RecurrenceHelper.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.cs" />
     <Compile Include="Migrations\201506150718575_database_initialize.Designer.cs">
       <DependentUpon>201506150718575_database_initialize.cs</DependentUpon>
@@ -102,6 +103,14 @@
     <Compile Include="Migrations\201506152158028_ResourcesMig.cs" />
     <Compile Include="Migrations\201506152158028_ResourcesMig.Designer.cs">
       <DependentUpon>201506152158028_ResourcesMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161539250_Recurrence.cs" />
+    <Compile Include="Migrations\201506161539250_Recurrence.Designer.cs">
+      <DependentUpon>201506161539250_Recurrence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161543243_AppointmentIdentity.cs" />
+    <Compile Include="Migrations\201506161543243_AppointmentIdentity.Designer.cs">
+      <DependentUpon>201506161543243_AppointmentIdentity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppointmentModelBase.cs" />
@@ -183,6 +192,15 @@
     <EmbeddedResource Include="Migrations\201506152158028_ResourcesMig.resx">
       <DependentUpon>201506152158028_ResourcesMig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161539250_Recurrence.resx">
+      <DependentUpon>201506161539250_Recurrence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161543243_AppointmentIdentity.resx">
+      <DependentUpon>201506161543243_AppointmentIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -192,4 +210,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
 </Project>

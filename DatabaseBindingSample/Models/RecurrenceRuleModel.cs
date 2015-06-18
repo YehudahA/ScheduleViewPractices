@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using Telerik.Windows.Controls.ScheduleView;
 using Telerik.Windows.Controls.ScheduleView.ICalendar;
 
@@ -12,28 +9,19 @@ namespace DatabaseBindingSample.Models
     [Table("RecurrenceRules")]
     public class RecurrenceRuleModel : IRecurrenceRule
     {
-        #region ctor; fields
-
         public RecurrenceRuleModel()
         {
             this.Exceptions = new HashSet<ExceptionOccurrenceModel>();
         }
-
-        #endregion // ctor; fields
-
-        #region properties
 
         [Key]
         public int AppointmentId { get; set; }
         public string PatternString { get; set; }
 
         public virtual AppointmentModel MasterAppointment { get; set; }
-        public virtual ICollection<ExceptionOccurrenceModel> Exceptions{get;set;}
+        public virtual ICollection<ExceptionOccurrenceModel> Exceptions { get; set; }
 
-        ICollection<IExceptionOccurrence> IRecurrenceRule.Exceptions
-        {
-            get { return new DatabaseBindingSample.Collections.Generic.CollectionWrapper<IExceptionOccurrence,ExceptionOccurrenceModel>(this.Exceptions); }
-        }
+        #region IRecurrenceRule
 
         [NotMapped]
         public RecurrencePattern Pattern
@@ -50,10 +38,12 @@ namespace DatabaseBindingSample.Models
             }
         }
 
-        #endregion // properties
-
-        #region methods
-
+        /// <summary>
+        /// This method called when the user create new ExceptionAppointment.
+        /// the method receive the master appointment, and copy his properties [Subject, Body etc] to new ExceptionAppointment.
+        /// </summary>
+        /// <param name="master">The master appointment</param>
+        /// <returns>New <see cref="ExceptionAppointmentModel"/></returns>
         public IAppointment CreateExceptionAppointment(IAppointment master)
         {
             ExceptionAppointmentModel newApp = new ExceptionAppointmentModel();
@@ -61,7 +51,15 @@ namespace DatabaseBindingSample.Models
             return newApp;
         }
 
-        #endregion // methods
+        /// <summary>
+        /// 
+        /// </summary>
+        ICollection<IExceptionOccurrence> IRecurrenceRule.Exceptions
+        {
+            get { return new ObjectModel.CollectionWrapper<IExceptionOccurrence, ExceptionOccurrenceModel>(this.Exceptions); }
+        }
+
+        #endregion // IRecurrenceRule
 
         #region ICopyable<IRecurrenceRule>
 
@@ -78,13 +76,7 @@ namespace DatabaseBindingSample.Models
             RecurrenceRuleModel otherModel = other as RecurrenceRuleModel;
 
             this.Pattern = other.Pattern;
-            this.Exceptions.Clear();
             this.MasterAppointment = otherModel.MasterAppointment;
-            
-            foreach (ExceptionOccurrenceModel occ in otherModel.Exceptions)
-            {
-                this.Exceptions.Add(occ);
-            }
         }
 
         #endregion // ICopyable<IRecurrenceRule>
@@ -98,10 +90,13 @@ namespace DatabaseBindingSample.Models
             return newExcepOcc;
         }
 
+        /// <summary>
+        /// Create a new ExceptionOccurrence object. this method called when the user DELETE an Occurrence of the RecurrenceRule, or when the user want CHANGE some property of some Occourrence.
+        /// </summary>
+        /// <returns>ExceptionOccurrenceModel object</returns>
         public IExceptionOccurrence CreateNew()
         {
             ExceptionOccurrenceModel newExc = new ExceptionOccurrenceModel();
-            //this.Exceptions.Add(newExc);
             return newExc;
         }
 
