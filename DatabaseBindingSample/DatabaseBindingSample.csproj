@@ -127,9 +127,9 @@
     <Compile Include="Models\ResourceModel.cs" />
     <Compile Include="Models\ResourceTypeModel.cs" />
     <Compile Include="Models\SchedulingDbContext.cs" />
-    <Compile Include="Mvvm\DialogService.cs" />
+    <Compile Include="Mvvm\DialogHostService.cs" />
     <Compile Include="Mvvm\DialogViewModelBase.cs" />
-    <Compile Include="Mvvm\IDialogService.cs" />
+    <Compile Include="Mvvm\IDialogHostService.cs" />
     <Compile Include="Mvvm\IDialogViewModel.cs" />
     <Compile Include="Mvvm\ViewLocator.cs" />
     <Compile Include="ViewModels\CategoriesEditorViewModel.cs" />

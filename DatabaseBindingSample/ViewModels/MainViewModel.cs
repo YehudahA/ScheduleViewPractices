@@ -18,7 +18,7 @@ namespace DatabaseBindingSample.ViewModels
         public MainViewModel()
         {
             this.context = new SchedulingDbContext();
-            this.dialogService = new Mvvm.DialogService();
+            this.dialogHostService = new Mvvm.DialogHostService();
 
             this.appointments = new RadObservableCollection<AppointmentModel>();
             this.loadAppointmentsCommand = new DelegateCommand<IDateSpan>(LoadAppointments);
@@ -32,7 +32,7 @@ namespace DatabaseBindingSample.ViewModels
 
 
         private readonly SchedulingDbContext context;
-        private readonly Mvvm.IDialogService dialogService;
+        private readonly Mvvm.IDialogHostService dialogHostService;
         private readonly RadObservableCollection<AppointmentModel> appointments;
         private readonly DelegateCommand<IDateSpan> loadAppointmentsCommand;
         private readonly DelegateCommand saveCommand;
@@ -168,7 +168,7 @@ namespace DatabaseBindingSample.ViewModels
         private void EditCategories()
         {
             CategoriesEditorViewModel viewModel = new CategoriesEditorViewModel(this.context);
-            bool? changed = dialogService.RaiseDialog(viewModel);
+            bool? changed = dialogHostService.RaiseDialog(viewModel);
 
             if (changed ?? false)
             {

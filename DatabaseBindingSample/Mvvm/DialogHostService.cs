@@ -3,16 +3,16 @@ using System.Windows;
 
 namespace DatabaseBindingSample.Mvvm
 {
-    public sealed class DialogService : IDialogService
+    public sealed class DialogHostService : IDialogHostService
     {
-        #region IDialogSeivice
+        #region IDialogHostService
 
         public bool? RaiseDialog<T>(T viewModel) where T : IDialogViewModel
         {
             return Invoke(viewModel);
         }
 
-        #endregion // IDialogSeivice
+        #endregion // IDialogHostService
 
         #region private
 
