@@ -2,7 +2,7 @@
 
 namespace DatabaseBindingSample.Mvvm
 {
-    interface IDialogService
+    interface IDialogHostService
     {
         bool? RaiseDialog<T>(T viewModel) where T : IDialogViewModel;
     }
